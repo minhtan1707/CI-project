@@ -6,7 +6,7 @@ class Auth extends CI_Controller {
             $CI =& get_instance();
             $CI->load->library('session');
             if(empty($CI->session->userdata('username'))){
-                redirect('login');
+                redirect('admin');
             }
         }
 

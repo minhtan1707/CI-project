@@ -6,11 +6,16 @@ class Login extends CI_Controller {
 		parent::__construct();
         $this->load->helper('url_helper');
         $this->load->library('session');
-
 	}
 
     public function index(){
-        $this->load->view('login');
+        if(empty($this->session->userdata('username')))
+        {
+            $this->load->view('backend/login');
+        }
+        else{
+            redirect('admin/product');
+            }
     }
 
     public function check(){
@@ -22,8 +27,10 @@ class Login extends CI_Controller {
         {   
             // print_r($logged_in['user']['admin']);
             $this->session->set_userdata($logged_in['user']);
-            redirect('product');
-        }else{
+            redirect('admin/product');
+        }
+        else
+        {
             redirect('login');
         }
     }

@@ -53,5 +53,11 @@ class Product_models extends CI_Model {
                 $query = $this->db->get_where('product',array('product.category_id'=>$id));
                 return $query->result_array();
         }
+        public function get_by_orderid($id){
+                $this->db->order_by("product.id", 'ASC');
+                $this->db->join('order_detail','order_detail.product_id=product.id');
+                $query = $this->db->get_where('product',array('product.id'=>$id));
+                return $query->result_array();
+        }
 
 }

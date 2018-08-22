@@ -9,23 +9,14 @@ class Product extends CI_Controller {
         $this->load->helper('url_helper');
 		// $this->act = isset($_GET['act'])?$_GET['act']:'';
 		// var_dump($_GET['act']);
-		$this->load->library('pagination');
-		
-		
-		
 		$this->load->library('auth');
 	}
 	
 	public function index()
 	{
-		// $config['base_url'] = 'http://localhost:8012/CI-project/index.php/backend/product/page/';
-		// $config['total_rows'] = 10;
-		// $config['per_page'] = 4;
-		// $this->pagination->create_links();
-		// $this->pagination->initialize($config);
 		$data['title']="Product List";
-
 		$data['products']=$this->product_models->get_product();
+		$this->load->view('backend/template/header',$data);
 		$this->load->view('backend/productlist',$data);
 	}
 
@@ -36,7 +27,8 @@ class Product extends CI_Controller {
 		if (empty($data['product']))
         {
                 show_404();
-        }
+		}
+		$this->load->view('backend/template/header',$data);
 		$this->load->view('backend/productitem',$data);
 	}
 
@@ -45,6 +37,7 @@ class Product extends CI_Controller {
 		
 		if(empty($_POST['product_name']))
 		{
+			$this->load->view('backend/template/header',$data);
 			$this->load->view('backend/addproduct',$data);
 		}
 		else
@@ -67,13 +60,13 @@ class Product extends CI_Controller {
 				$product_image= $_FILES['product_image']['name'];
 			}
 			$this->product_models->add($product_image);
-			redirect('product');
+			redirect('admin/product');
 		}
 	}
 
 	public function delete($id){
 		$this->product_models->delete($id);
-		redirect('product');
+		redirect('admin/product');
 	}
 
 	public function edit($id){
@@ -82,12 +75,13 @@ class Product extends CI_Controller {
 		if (empty($data['product']))
         {
                 show_404();
-        }
+		}
+		$this->load->view('backend/template/header',$data);
 		$this->load->view('backend/edit',$data);
 	}
 
 	public function update(){
 		$this->product_models->update();
-		redirect('product');
+		redirect('admin/product');
 	}
 }

@@ -16,7 +16,9 @@ class Cart extends CI_Controller {
         $data['title']="Shopping Cart";
         // $data['products']=$this->cart->contents();
         $data['products']=$_SESSION['cart'];
-        $this->load->view('cart',$data);    
+        $data['title']='Cart';
+        $this->load->view('header',$data);
+        $this->load->view('cart',$data);
     }
     public function add()
     {
@@ -53,17 +55,10 @@ class Cart extends CI_Controller {
         //     }
         // }
         // redirect('product');
-        if(isset($_POST))
+        $cart_item=$this->input->post();
+        if(isset($cart_item))
         {
             $product_id = $this->input->post('product_id');
-            $cart_item=array(
-                'product_id' => $this->input->post('product_id'),
-                'product_name' => $this->input->post('product_name'),
-                'price' => $this->input->post('price'),
-                'quantity' => $this->input->post('quantity'),
-                'description' => $this->input->post('description'),
-                'image_file' => $this->input->post('image_file')
-            );
             if(isset($_SESSION['cart']))
             {
                 if(array_key_exists($product_id,$_SESSION['cart']))
