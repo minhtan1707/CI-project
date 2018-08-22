@@ -20,21 +20,21 @@
             <?php foreach($products as $product): ?>
             <div class="col-3 mt-3">
                 <div class="card" style="width:14rem;min-height:500px;">
-                    <a href=<?php echo site_url('product/item/'.$product['id']); ?>><img class="card-img-top" src="<?php echo base_url('/assets/images/').$product['options']['image_file'];?>"></a>
+                    <a href=<?php echo site_url('product/item/'.$product['product_id']); ?>><img class="card-img-top" src="<?php echo base_url('/assets/images/').$product['image_file'];?>"></a>
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo $product['name'];?></h5>
+                        <h5 class="card-title"><?php echo $product['product_name'];?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo 'Price: '.$product['price'].'$';?></h6>
-                        <p class="card-text" style="height:48px;"><?php echo $product['options']['description'];?></p>
+                        <p class="card-text" style="height:48px;"><?php echo $product['description'];?></p>
                         <?php echo form_open('cart/update');?>
-                        <input type=hidden name='product_name' value="<?php echo $product['name'];?>" >
+                        <input type=hidden name='product_name' value="<?php echo $product['product_name'];?>" >
                         <input type=hidden name='price' value="<?php echo $product['price'];?>" >
-                        <input type=hidden name='description' value="<?php echo $product['options']['description'];?>" >
-                        <input type=hidden name='product_id' value="<?php echo $product['id'];?>" >
-                        <input type=hidden name='rowid' value="<?php echo $product['rowid'];?>" >
+                        <input type=hidden name='description' value="<?php echo $product['description'];?>" >
+                        <input type=hidden name='product_id' value="<?php echo $product['product_id'];?>" >
+                        
                         <div class=class='mt-5'>Quantity</div>
-                        <input  class='mt-0' type=number name=quantity value=<?php echo $product['qty'];?>>
+                        <input  class='mt-0' type=number name=quantity value=<?php echo $product['quantity'];?>>
                         <input type=submit name=submit class="btn btn-success mt-2 d-inline-block" value='Update Cart'>
-                        <a href="<?php echo site_url('cart/clear/'.$product['id']); ?>"class="btn btn-danger d-inline-block mt-2">Delete</a>
+                        <a href="<?php echo site_url('cart/clear/'.$product['product_id']); ?>"class="btn btn-danger d-inline-block mt-2">Delete</a>
                         
                         <?php echo form_close();?>
                         </form>
