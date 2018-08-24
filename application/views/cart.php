@@ -43,8 +43,11 @@
                 </div>
             </div>
              <?php endforeach;?>
+             
         </div>
-
+        <div class="d-flex justify-content-end">
+            <a href="<?php echo site_url('cart/checkout')?>" class="btn btn-primary">Check Out</a>
+            </div>
 
 
 </body>

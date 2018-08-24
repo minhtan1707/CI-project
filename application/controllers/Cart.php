@@ -7,6 +7,7 @@ class Cart extends CI_Controller {
 		parent::__construct();
         $this->load->model('categories_models');
         $this->load->model('product_models');
+        $this->load->model('order_models');
         $this->load->helper('url_helper');
         $this->load->library('session');
         $this->load->library('cart');
@@ -15,10 +16,14 @@ class Cart extends CI_Controller {
     {
         $data['title']="Shopping Cart";
         // $data['products']=$this->cart->contents();
-        $data['products']=$_SESSION['cart'];
-        $data['title']='Cart';
-        $this->load->view('header',$data);
-        $this->load->view('cart',$data);
+        if(isset($_SESSION['cart'])){
+            $data['products']=$_SESSION['cart'];
+            $this->load->view('header',$data);
+            $this->load->view('cart',$data);
+        }else{
+            $this->load->view('header',$data);
+        }
+        
     }
     public function add()
     {
@@ -123,5 +128,19 @@ class Cart extends CI_Controller {
         $product_id = $this->input->post('product_id');
         $_SESSION['cart'][$product_id]['quantity']=$this->input->post('quantity');
         redirect('cart');
+    }
+    public function checkout(){
+        $data['title']='Check Out';
+        $data['cart_items']=$_SESSION['cart'];
+        if(empty($this->input->post()))
+        {
+            $this->load->view('header',$data);
+            $this->load->view('checkout',$data);
+        } else {
+            $order_id=$this->order_models->insert_order();
+            $this->order_models->insert_order_detail($order_id);
+            session_destroy();
+            redirect('success');
+        }
     }
 }

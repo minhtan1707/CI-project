@@ -16,30 +16,31 @@
     <div class="container" style="max-width:940px;">
     
     <h1><?php echo $title;?></h1>
-        <div class="row">
-            <?php foreach($products as $product): ?>
-            <div class="col-3 mt-3">
-                <div class="card" style="width:14rem;min-height:500px;">
-                    <a href=<?php echo site_url('product/item/'.$product['id']); ?>><img class="card-img-top" src="<?php echo base_url('/assets/images/').$product['image_file'];?>"></a>
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo $product['product_name'];?></h5>
-                        <h6 class="card-subtitle mb-2 text-muted"><?php echo 'Price: '.$product['price'].'$';?></h6>
-                        <p class="card-text" style="height:48px;"><?php echo $product['description'];?></p>
-                        <?php echo form_open('backend/product/edit/'.$product['id']);?>
+             <?php foreach($products as $product): ?>
+                <div class="row border">
+                    <div class="col-2 my-1">
+                            <a href=<?php echo 'product_detail.php?id='.$product['id'];?>><img class="img-fluid" src="<?php echo base_url('/assets/images/').$product['image_file'];?>" style="height:130px"></a>
+                    </div>         
+                    <div class="col-8 my-1">
+                                <p class="my-1"><?php echo $product['product_name'];?></p>
+                                <p class="my-1 text-muted"><?php echo 'Price: '.$product['price'].'$';?></p>
+                                <p class="my-1"><?php echo $product['description'];?></p>
+                    </div>      
+                    <div class="col-2 my-1 k-flex">
+                    <?php echo form_open('backend/product/edit/'.$product['id']);?>
                         <input type=hidden name='image_file' value="<?php echo $product['image_file'];;?>" >
                         <input type=hidden name='product_name' value="<?php echo $product['product_name'];?>" >
                         <input type=hidden name='price' value="<?php echo $product['price'];?>" >
                         <input type=hidden name='description' value="<?php echo $product['description'];?>" >
                         <input type=hidden name='product_id' value="<?php echo $product['id'];?>" >
-                        <input type=submit class="btn btn-primary" value=Edit></a>
+                        <input type=submit class="btn btn-primary px-4" value=Edit></a>
                         <form>
-                        <a href="<?php echo site_url('product/delete/'.$product['id']); ?>"class="btn btn-danger">Delete</a>
-                        </form>
+                        <a href="<?php echo site_url('product/delete/'.$product['id']); ?>"class="btn btn-danger mt-2 px-3">Delete</a>
+                        <?php echo form_close();?>
+                    </div>       
                         
-                    </div>
-                </div>
-            </div>
-             <?php endforeach;?>
+                    </div>                  
+                <?php endforeach;?>
         </div>
 
 
