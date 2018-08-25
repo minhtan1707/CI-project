@@ -19,7 +19,7 @@
              <?php foreach($products as $product): ?>
                 <div class="row border">
                     <div class="col-2 my-1">
-                            <a href=<?php echo 'product_detail.php?id='.$product['id'];?>><img class="img-fluid" src="<?php echo base_url('/assets/images/').$product['image_file'];?>" style="height:130px"></a>
+                            <a href=<?php echo site_url('admin/product/item/'.$product['id']); ?>><img class="img-fluid" src="<?php echo base_url('/assets/images/').$product['image_file'];?>" style="height:130px"></a>
                     </div>         
                     <div class="col-8 my-1">
                                 <p class="my-1"><?php echo $product['product_name'];?></p>

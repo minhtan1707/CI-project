@@ -23,7 +23,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav navml-auto">
                         <li class="nav-item">
                             <a class="nav-link text-light" href="<?php echo site_url('product')?>">Product List</a>
                         </li>
@@ -34,7 +34,7 @@
                             <a class="nav-link text-light" href="<?php echo site_url('cart/clear')?>">Clear Cart</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="<?php echo site_url('categories')?>">Clear Cart</a>
+                            <a class="nav-link text-light" href="<?php echo site_url('categories')?>">Categories</a>
                         </li>
                         <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
