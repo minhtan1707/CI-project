@@ -7,8 +7,6 @@ class Categories extends CI_Controller {
         $this->load->model('categories_models');
         $this->load->model('product_models');
         $this->load->helper('url_helper');
-		// $this->act = isset($_GET['act'])?$_GET['act']:'';
-        // var_dump($_GET['act']);
         $this->load->library('auth');
     }
     public function index(){
@@ -18,7 +16,7 @@ class Categories extends CI_Controller {
         $this->load->view('backend/categories',$data);
     }
     public function add(){
-        if(empty($_POST['categories_name']))
+        if(empty($this->input->post('categories_name')))
         {
             $this->load->view('backend/template/header',$data);
             $this->load->view('backend/addcategories');

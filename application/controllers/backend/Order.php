@@ -8,8 +8,6 @@ class Order extends CI_Controller {
         $this->load->model('product_models');
         $this->load->model('order_models');
         $this->load->helper('url_helper');
-		// $this->act = isset($_GET['act'])?$_GET['act']:'';
-        // var_dump($_GET['act']);
         $this->load->library('auth');
     }
     public function index(){

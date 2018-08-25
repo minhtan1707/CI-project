@@ -7,8 +7,6 @@ class Product extends CI_Controller {
 		parent::__construct();
 		$this->load->model('product_models');
         $this->load->helper('url_helper');
-		// $this->act = isset($_GET['act'])?$_GET['act']:'';
-		// var_dump($_GET['act']);
 		$this->load->library('auth');
 	}
 	
