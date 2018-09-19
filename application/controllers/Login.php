@@ -9,13 +9,25 @@ class Login extends CI_Controller {
 	}
 
     public function index(){
-        if(empty($this->session->userdata('username')))
+        if(isset($_SESSION['user']))
         {
+            if($_SESSION['user']['username']!='admin')
+            {
+                $this->load->view('backend/login');
+            }
+            else
+            {
+                if($_SESSION['user']['username']=='admin')
+                {
+                    redirect(site_url('admin/product'));
+                }else{
+                    redirect(site_url('/'));
+                }
+            }
+        } else{
             $this->load->view('backend/login');
         }
-        else{
-            redirect('admin/product');
-            }
+
     }
 
     public function check(){
@@ -25,7 +37,7 @@ class Login extends CI_Controller {
         $logged_in= $this->user_models->check($username,$password);
         if($logged_in['logged_in']==TRUE)
         {   
-            $this->session->set_userdata($logged_in['user']);
+            $_SESSION['user']=$logged_in['user'];
             redirect('admin/product');
         }
         else

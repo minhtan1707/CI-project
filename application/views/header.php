@@ -72,8 +72,8 @@ $this->load->helper('url');?>
     --><!-- ////////////// CSS Include ////////////// -->
     <!-- inject:css -->
     <!-- endinject -->
-    <link rel="stylesheet" href="../static/css/thuvien.css">
-    <link rel="stylesheet" href="../static/css/main.css"><!-- ////////////// FAVICON ////////////// -->
+    <link rel="stylesheet" href="<?php echo base_url('static/css/thuvien.css');?>">
+    <link rel="stylesheet" href="<?php echo base_url('static/css/main.css');?>"><!-- ////////////// FAVICON ////////////// -->
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="../static/favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../static/favicon/favicon-16x16.png" sizes="16x16">
@@ -115,8 +115,8 @@ $this->load->helper('url');?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fullStackMenu" aria-controls="fullStackMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
             <div class="collapse navbar-collapse" id="fullStackMenu">
               <ul class="navbar-nav m-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="'.site_url('/product').'">Product</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/');?>">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/product');?>">Product</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
                   <div class="dropdown-menu"><a class="dropdown-item" href="services.html">Phone</a><a class="dropdown-item" href="services.html">Laptop</a><a class="dropdown-item" href="services.html">Tablet</a></div>
                 </li>

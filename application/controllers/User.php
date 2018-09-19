@@ -31,7 +31,12 @@ class User extends CI_Controller {
             // $this->load->view('userdetail',$data);
             echo $data['user']['username'];
             echo $data['user']['user_id'];
-            redirect(site_url('/'));
+            if($data['admin']==0){
+                redirect(site_url('/'));
+            } else{
+                redirect(site_url('/admin'));
+            }
+           
         }
         else
         {
