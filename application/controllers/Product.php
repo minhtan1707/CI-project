@@ -14,7 +14,9 @@ class Product extends CI_Controller {
 		$data['title']="Product List";
         $data['products']=$this->product_models->get_product();
         $this->load->view('header',$data);
-        $this->load->view('productlist',$data);
+		$this->load->view('productlist',$data);
+		$this->load->view('footer',$data);
+		
 	}
 	public function item($id=NULL)
 	{

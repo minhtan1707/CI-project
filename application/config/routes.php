@@ -62,6 +62,6 @@ $route['admin/product'] = 'backend/product';
 $route['admin'] = 'login';
 $route['admin/(:any)'] = 'backend/$1';
 $route['(:any)'] = '$1';
-$route['default_controller'] = 'product';
+$route['default_controller'] = 'home';
 $route['404_override'] = '';    
 $route['translate_uri_dashes'] = FALSE;

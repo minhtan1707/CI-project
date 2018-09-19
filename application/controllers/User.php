@@ -17,17 +17,21 @@ class User extends CI_Controller {
 				break;
 			case "home":
 				$this->home();
+                break;
+            case "logout":
+				$this->logout();
 				break;
 		}
 	}
 	public function home()
 	{
-        if(isset($_SESSION['user']))
+        if(isset($_SESSION['user']['username']))
         {
             $data=$this->user_models->check($_SESSION['user']['username'],$_SESSION['user']['password']);
             // $this->load->view('userdetail',$data);
             echo $data['user']['username'];
             echo $data['user']['user_id'];
+            redirect(site_url('/'));
         }
         else
         {
@@ -51,5 +55,13 @@ class User extends CI_Controller {
         }else{
             redirect(site_url('user?act=home'));
         }
-	}
+    }
+    public function logout()
+    {
+        if(isset($_SESSION['user']))
+        {
+            $this->session->unset_userdata('user');
+        }
+        redirect(site_url('/'));
+    }
 }
