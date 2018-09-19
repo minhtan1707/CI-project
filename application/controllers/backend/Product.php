@@ -8,12 +8,24 @@ class Product extends CI_Controller {
 		$this->load->model('product_models');
         $this->load->helper('url_helper');
 		$this->load->library('auth');
+		$this->load->library('pagination');
+
+
 	}
 	
 	public function index()
 	{
 		$data['title']="Product List";
 		$data['products']=$this->product_models->get_product();
+		
+$config['base_url'] = 'http://example.com/index.php/test/page/';
+$config['total_rows'] = 200;
+$config['per_page'] = 20;
+
+$this->pagination->initialize($config);
+
+echo $this->pagination->create_links();
+
 		$this->load->view('backend/template/header',$data);
 		$this->load->view('backend/productlist',$data);
 	}

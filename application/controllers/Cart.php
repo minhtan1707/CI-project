@@ -70,6 +70,7 @@ class Cart extends CI_Controller {
         $_SESSION['cart'][$product_id]['quantity']=$this->input->post('quantity');
         redirect('cart');
     }
+
     public function checkout(){
         $data['title']='Check Out';
         $data['cart_items']=$_SESSION['cart'];

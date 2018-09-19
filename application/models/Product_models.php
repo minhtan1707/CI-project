@@ -46,7 +46,6 @@ class Product_models extends CI_Model {
                     $this->db->where('id',$this->input->post('id'));
                     return $this->db->update('product', $data);
         }
-
         public function get_by_categories($id){
                 $this->db->order_by("product.id", 'ASC');
                 $this->db->join('categories','categories.category_id=product.category_id');

@@ -19,4 +19,10 @@ class User_models extends CI_Model {
             return FALSE;
         }
     }
+    public function getUserDetailWhere($username)
+    {
+        $this->db->where('username',$username);
+        $query=$this->db->get('users');
+        return $query->result_array();
+    }
 }

@@ -7,6 +7,7 @@ class Categories extends CI_Controller {
         $this->load->model('categories_models');
         $this->load->model('product_models');
         $this->load->helper('url_helper');
+        //Check if login as admin
         $this->load->library('auth');
     }
     public function index(){

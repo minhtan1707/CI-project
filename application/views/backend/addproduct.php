@@ -36,7 +36,7 @@
                 <option value="<?php echo $category['category_id'];?>"><?php echo $category['category_name'];?></option>
                 <?php endforeach;?>
                 </select>
-                <input type="file" name="product_image" size="20" />
+                <input type="file" name="template_image" size="20" accept="image/*"/>
                 <button class="btn btn-primary mt-3" type="submit" name=submit value=submit>Submit</button>
             </form>
             </div>

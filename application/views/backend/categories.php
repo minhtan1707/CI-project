@@ -10,7 +10,5 @@
             <?php endforeach;?>
         </ul>
         <a class='btn btn-primary mt-2' href="<?php echo site_url('/admin/categories/add');?>" >Add Categories</a>
-
-
 </body>
 </html>

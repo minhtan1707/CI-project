@@ -27,7 +27,7 @@
                         <a class="nav-link text-light" href="<?php echo site_url('admin/product')?>">Product List</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="<?php echo site_url('product/add'); ?>">Add Product</a>
+                        <a class="nav-link text-light" href="<?php echo site_url('admin/product/add'); ?>">Add Product</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-light" href="<?php echo site_url('admin/categories'); ?>">Categories</a>

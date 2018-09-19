@@ -25,7 +25,6 @@ class Login extends CI_Controller {
         $logged_in= $this->user_models->check($username,$password);
         if($logged_in['logged_in']==TRUE)
         {   
-            // print_r($logged_in['user']['admin']);
             $this->session->set_userdata($logged_in['user']);
             redirect('admin/product');
         }
