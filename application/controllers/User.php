@@ -20,7 +20,12 @@ class User extends CI_Controller {
                 break;
             case "logout":
 				$this->logout();
-				break;
+                break;
+            case "signup":
+                if($this->input->post())
+					$this->save();
+                $this->signup();
+                break;
 		}
 	}
 	public function home()
@@ -45,18 +50,20 @@ class User extends CI_Controller {
 	}
 	public function login()
 	{
+        
         if(!isset($_SESSION['user']))
         {
-        if($this->input->post())
-        {
-            $data=$this->user_models->check($this->input->post('username'),$this->input->post('password'));
-            $_SESSION['user']=$data['user'];
-            $this->home();
-        }
-        else
-        {
-            $this->load->view('login');
-        }
+            if($this->input->post())
+            {
+                $data=$this->user_models->check($this->input->post('username'),$this->input->post('password'));
+                $_SESSION['user']=$data['user'];
+                $this->home();
+            }
+            else
+            {
+                $this->load->view('header');
+                $this->load->view('login',$data);
+            }
         }else{
             redirect(site_url('user?act=home'));
         }
@@ -69,4 +76,20 @@ class User extends CI_Controller {
         }
         redirect(site_url('/'));
     }
+    public function signup()
+    {
+        $data['message']=$this->session->flashdata('signup_err');
+        $this->load->view('header');
+        $this->load->view('signup',$data);
+    }
+	public function save(){
+		$data=$this->input->post();
+		if($this->user_models->save($data)){
+			$this->session->set_flashdata('signup_success', 'Sign up sucessfully, please log in');
+			return redirect('user?act=login');
+		} else{
+			$this->session->set_flashdata('signup_err', 'Sign up unsucessfully');
+			return redirect(site_url('user?act=signup'));
+		}
+	}
 }

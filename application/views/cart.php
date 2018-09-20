@@ -19,7 +19,7 @@
                         
                         <div class=class='mt-5'>Quantity</div>
                         <input  class='mt-0' type=number name=quantity value=<?php echo $product['quantity'];?>>
-                        <input type=submit name=submit class="btn btn-success mt-2 d-inline-block" value='Update Cart'>
+                        <input type=submit name=submit class="btn btn-primary mt-2 d-inline-block" value='Update Cart'>
                         <a href="<?php echo site_url('cart?act=clear&id=').$product['product_id'];?>"class="btn btn-danger d-inline-block mt-2">Delete</a>
                         
         
@@ -32,7 +32,7 @@
              
         </div>
         <div class="d-flex justify-content-end mt-5">
-        <a href="<?php echo site_url('cart?act=clear')?>" class="btn btn-danger">Clear Cart</a>
             <a href="<?php echo site_url('cart?act=checkout')?>" class="btn btn-primary">Check Out</a>
-            </div>
+            <a href="<?php echo site_url('cart?act=clear')?>" class="btn btn-danger mr-2">Clear Cart</a>
+        </div>
 

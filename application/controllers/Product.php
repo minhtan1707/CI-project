@@ -13,7 +13,9 @@ class Product extends CI_Controller {
 	public function index()
 	{
 		$data['title']="Product List";
-        $data['products']=$this->product_models->get();
+		$data['products']=$this->product_models->get();
+		$data['itemadded']=$this->session->flashdata('itemadded');
+		$data['clearcart']=$this->session->flashdata('clearcart');
         $this->load->view('header',$data);
 		$this->load->view('productlist',$data);
 		$this->load->view('footer',$data);

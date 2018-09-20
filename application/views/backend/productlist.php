@@ -1,6 +1,6 @@
 
     <div class="container" style="max-width:940px;">
-    
+    <div class="bg-success message text-light text-center p-2"><?php echo $this->session->flashdata('itemadded')?></div>
     <h1><?php echo $title;?></h1>
              <?php foreach($products as $product): ?>
                 <div class="row border">

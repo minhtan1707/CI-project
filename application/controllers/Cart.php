@@ -71,6 +71,7 @@ public function index(){
                 $_SESSION['cart'][$product_id]=$cart_item;
             }
         }
+        $this->session->set_flashdata('itemadded', 'item has been added');
         redirect('product');
     }
     public function clear($id=null)
@@ -78,7 +79,8 @@ public function index(){
         $products=$_SESSION['cart'];
         if($id===NULL)
         {
-            session_destroy();
+            unset($_SESSION['cart']);
+            $this->session->set_flashdata('clearcart', 'cart has been cleared');
             redirect('product');
         }
         if(array_key_exists($id,$_SESSION['cart']))
@@ -113,7 +115,7 @@ public function index(){
         } else {
             $order_id=$this->order_models->insert_order();
             $this->order_models->insert_order_detail($order_id);
-            session_destroy();
+            unset($_SESSION['cart']);
             redirect('success');
         }
     }

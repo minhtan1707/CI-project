@@ -1,6 +1,12 @@
 <?php
 class User_models extends CI_Model {
-
+    protected $_table_name = 'users';
+    protected $_order_by = 'user_id';
+    protected $_primary_filter = 'intval';
+    protected $_order_by_type = 'desc';
+    protected $_primary_key ='user_id';
+public $rules = array();
+protected $_timestamps = FALSE;
     public function __construct()
     {
             $this->load->database();
@@ -25,4 +31,35 @@ class User_models extends CI_Model {
         $query=$this->db->get('users');
         return $query->result_array();
     }
+    public function save($data, $id = NULL) {
+		// Set timestamps
+		if ($this->_timestamps == TRUE) {
+			$now = date('Y-m-d H:i:s');
+			$id || $data['created'] = $now;
+			$data['modified'] = $now;
+		}
+		// Insert
+		if ($id === NULL) {
+			!isset($data[$this->_primary_key]) || $data[$this->_primary_key] = NULL;
+			$this->db->set($data);
+			$this->db->insert($this->_table_name);
+			$id = $this->db->insert_id();
+			if ($id) {
+				return TRUE;
+			}
+
+		}
+		// Update
+		else {
+			$filter = $this->_primary_filter;
+			$id = $filter($id);
+			$this->db->set($data);
+			$this->db->where($this->_primary_key, $id);
+			if ($this->db->update($this->_table_name)) {
+				return TRUE;
+			}
+
+		}
+		return FALSE;
+	}
 }

@@ -1,5 +1,6 @@
 <div class="container" style="max-width:940px;">
-
+<div class="bg-success message text-light text-center" style="line-height:2rem"><?php echo isset($itemadded)?$itemadded:"";?></div>
+<div class="bg-success message text-light text-center" style="line-height:2rem"><?php echo isset($clearcart)?$clearcart:"";?></div>
     <h2>
         <?php echo $title;?>
     </h2>
