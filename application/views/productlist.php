@@ -1,10 +1,8 @@
 <div class="container" style="max-width:940px;">
 <div class="bg-success message text-light text-center" style="line-height:2rem"><?php echo isset($itemadded)?$itemadded:"";?></div>
 <div class="bg-success message text-light text-center" style="line-height:2rem"><?php echo isset($clearcart)?$clearcart:"";?></div>
-    <h2>
-        <?php echo $title;?>
-    </h2>
-    <div class="row">
+
+    <div class="row mt-4">
         <?php foreach($products as $key=>$product): ?>
         <div class="col-3 my-2">
             <div class="card d-flex flex-row flex-wrap" style="width:14rem;height:500px;">
@@ -30,7 +28,7 @@
                         <div class=class='mt-5'>Quantity</div>
                         <input class='mt-0' type=number name=quantity value=1>
 
-                        <input type=submit name=submit class="btn btn-primary mt-1" value='Add to cart'>
+                        <input type=submit name=submit class="btn btn-danger mt-1" value='Add to cart'>
                     </form>
                 </div>
             </div>

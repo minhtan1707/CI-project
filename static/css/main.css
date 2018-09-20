@@ -6353,7 +6353,7 @@ header .navbar .nav-item {
   margin-top: 4.25rem;
   position: relative; }
   .feature .owl-carousel .item {
-    height: 300px;
+    max-height: 600px;
     padding: .5ram; }
   .feature .owl-carousel .owl-nav button {
     background: white;
@@ -6432,8 +6432,8 @@ header .navbar .nav-item {
           line-height: 2.5rem;
           font-size: 1rem; } }
 
-.promotion-banner .row-banner {
-  height: 300px;
+.promotion-banner img{
+  width: 100%;
   padding: 5rem 3rem; }
 
 .promotion-banner h2 {
@@ -6483,7 +6483,11 @@ header .navbar .nav-item {
           font-size: .6rem; } }
 
 .feature-category {
+  height:300px;
   padding: 4.25rem 0; }
+  .category-item{
+    height:250px;
+  }
   .feature-category h2 {
     font-size: 1.9rem;
     font-weight: 600; }

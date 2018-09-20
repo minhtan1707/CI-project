@@ -109,7 +109,7 @@ $this->load->helper('url');?>
     </header><!-- ////////////// HEADER ////////////// --><!-- ////////////// End Header ////////////// -->
 <!-- ////////////// Begin Main ////////////// -->
     <main>
-      <section class="main-menu bg-secondary">
+      <section class="main-menu bg-danger">
         <div class="container">
           <nav class="navbar navbar-expand-lg navbar-light p-0">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fullStackMenu" aria-controls="fullStackMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
