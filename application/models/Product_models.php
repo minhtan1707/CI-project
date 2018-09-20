@@ -1,6 +1,12 @@
 <?php
 class Product_models extends CI_Model {
-
+        protected $_table_name = 'product';
+        protected $_order_by = 'product_name';
+        protected $_primary_filter = 'intval';
+        protected $_order_by_type = 'desc';
+        protected $_primary_key ='id';
+	public $rules = array();
+	protected $_timestamps = FALSE;
         public function __construct()
         {
                 $this->load->database();
@@ -18,6 +24,12 @@ class Product_models extends CI_Model {
             $query = $this->db->get_where('product', array('id' => $id));
             return $query->row_array();
         }
+
+	public function getProductsWhere($where,$type=false){
+		$get = $this->get_by($where,$type);
+		if(empty($get))return false;
+		return $get;
+	}
         public function add($product_image)
         {
                 $data = array(
@@ -58,5 +70,26 @@ class Product_models extends CI_Model {
                 $query = $this->db->get_where('product',array('product.id'=>$id));
                 return $query->result_array();
         }
+        public function get($id = NULL, $single = FALSE) {
+		if ($id != NULL) {
+			$filter = $this->_primary_filter;
+			$id = $filter($id);
+			$this->db->where($this->_primary_key, $id);
+			$method = 'row';
+		} elseif ($single == TRUE) {
+			$method = 'row';
+		} else {
+			$method = 'result';
+		}
+
+		$this->db->order_by($this->_order_by,$this->_order_by_type);
+
+		return $this->db->get($this->_table_name)->$method();
+	}
+
+	public function get_by($where, $single = FALSE) {
+		$this->db->where($where);
+		return $this->get(NULL, $single);
+	}
 
 }

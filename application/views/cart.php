@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php echo $title;?></title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
 
-</head>
-<body>
-    <div class="container-fluid">
-
-    
-    </div>
     <div class="container" style="max-width:940px;">
     
-    <h1><?php echo $title;?></h1>
+    <h2 class="mt-5"><?php echo $title;?></h2>
         <div class="row">
             <?php foreach($products as $product): ?>
             <div class="col-3 mt-3">
@@ -25,7 +11,7 @@
                         <h5 class="card-title"><?php echo $product['product_name'];?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo 'Price: '.$product['price'].'$';?></h6>
                         <p class="card-text" style="height:48px;"><?php echo $product['description'];?></p>
-                        <?php echo form_open('cart/update');?>
+                        <form action="<?php echo site_url('/cart?act=upd');?>" method=POST>
                         <input type=hidden name='product_name' value="<?php echo $product['product_name'];?>" >
                         <input type=hidden name='price' value="<?php echo $product['price'];?>" >
                         <input type=hidden name='description' value="<?php echo $product['description'];?>" >
@@ -34,9 +20,9 @@
                         <div class=class='mt-5'>Quantity</div>
                         <input  class='mt-0' type=number name=quantity value=<?php echo $product['quantity'];?>>
                         <input type=submit name=submit class="btn btn-success mt-2 d-inline-block" value='Update Cart'>
-                        <a href="<?php echo site_url('cart/clear/'.$product['product_id']); ?>"class="btn btn-danger d-inline-block mt-2">Delete</a>
+                        <a href="<?php echo site_url('cart?act=clear&id=').$product['product_id'];?>"class="btn btn-danger d-inline-block mt-2">Delete</a>
                         
-                        <?php echo form_close();?>
+        
                         </form>
                         
                     </div>
@@ -45,10 +31,8 @@
              <?php endforeach;?>
              
         </div>
-        <div class="d-flex justify-content-end">
-            <a href="<?php echo site_url('cart/checkout')?>" class="btn btn-primary">Check Out</a>
+        <div class="d-flex justify-content-end mt-5">
+        <a href="<?php echo site_url('cart?act=clear')?>" class="btn btn-danger">Clear Cart</a>
+            <a href="<?php echo site_url('cart?act=checkout')?>" class="btn btn-primary">Check Out</a>
             </div>
 
-
-</body>
-</html>

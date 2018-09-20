@@ -11,8 +11,31 @@ class Cart extends CI_Controller {
         $this->load->helper('url_helper');
         $this->load->library('session');
         $this->load->library('cart');
+        $this->load->helper('form');
+        $this->act = isset($_GET['act'])?$_GET['act']:"";
+        $this->id=isset($_GET['id'])?$_GET['id']:"";
     }
-    public function index()
+
+public function index(){
+    switch($this->act){
+        case "add":
+            $this->add();
+            break;
+        case "home":
+            $this->home();
+            break;
+        case "clear":
+            $this->clear($this->id=Null);
+            break;
+        case "upd":
+            $this->upd();
+        break;
+            case "checkout":
+            $this->checkout();
+            break;
+    }
+}
+    public function home()
     {
         $data['title']="Shopping Cart";
         // $data['products']=$this->cart->contents();
@@ -20,6 +43,7 @@ class Cart extends CI_Controller {
             $data['products']=$_SESSION['cart'];
             $this->load->view('header',$data);
             $this->load->view('cart',$data);
+            $this->load->view('footer');
         }else{
             $this->load->view('header',$data);
         }
@@ -49,26 +73,33 @@ class Cart extends CI_Controller {
         }
         redirect('product');
     }
-    public function clear($id=FALSE)
+    public function clear($id=null)
     {
         $products=$_SESSION['cart'];
-        if($id===FALSE)
+        if($id===NULL)
         {
             session_destroy();
             redirect('product');
         }
-
         if(array_key_exists($id,$_SESSION['cart']))
             {
                 unset($_SESSION['cart'][$id]);
-                redirect('cart');
+                if($_SESSION['cart']==NULL)
+                {
+                    redirect('product');
+                }else{
+                    $this->home();
+                }
             }
     }
-    public function update()
+    public function upd()
     {
+        if($this->input->post()){
         $product_id = $this->input->post('product_id');
         $_SESSION['cart'][$product_id]['quantity']=$this->input->post('quantity');
-        redirect('cart');
+        }
+
+        $this->home();
     }
 
     public function checkout(){
@@ -78,6 +109,7 @@ class Cart extends CI_Controller {
         {
             $this->load->view('header',$data);
             $this->load->view('checkout',$data);
+            $this->load->view('footer',$data);
         } else {
             $order_id=$this->order_models->insert_order();
             $this->order_models->insert_order_detail($order_id);

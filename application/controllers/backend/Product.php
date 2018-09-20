@@ -9,31 +9,50 @@ class Product extends CI_Controller {
         $this->load->helper('url_helper');
 		$this->load->library('auth');
 		$this->load->library('pagination');
+		$this->act = isset($_GET['act'])?$_GET['act']:"";
+		$this->id=isset($_GET['id'])?$_GET['id']:"";
+}
 
-
+    public function index(){
+    switch($this->act){
+        case "item":
+            $this->item();
+			break;
+		case "delete":
+            $this->delete();
+			break;
+		case "edit":
+            $this->edit();
+			break;
+		case "upd":
+            $this->upd();
+            break;
+        default: 
+        $this->home();
+    }
 	}
 	
-	public function index()
+	public function home()
 	{
 		$data['title']="Product List";
-		$data['products']=$this->product_models->get_product();
+		$data['products']=$this->product_models->get();
 		
-$config['base_url'] = 'http://example.com/index.php/test/page/';
-$config['total_rows'] = 200;
-$config['per_page'] = 20;
+	// $config['base_url'] = 'http://example.com/index.php/test/page/';
+	// $config['total_rows'] = 200;
+	// $config['per_page'] = 20;
 
-$this->pagination->initialize($config);
+	// $this->pagination->initialize($config);
 
-echo $this->pagination->create_links();
+	// echo $this->pagination->create_links();
 
 		$this->load->view('backend/template/header',$data);
 		$this->load->view('backend/productlist',$data);
 	}
 
-	public function item($id=NULL)
+	public function item()
 	{
 		
-		$data['product']=$this->product_models->get_product($id);
+		$data['product']=$this->product_models->get($this->id);
 		if (empty($data['product']))
         {
                 show_404();
@@ -74,13 +93,13 @@ echo $this->pagination->create_links();
 		}
 	}
 
-	public function delete($id){
-		$this->product_models->delete($id);
+	public function delete(){
+		$this->product_models->delete($this->id);
 		redirect('admin/product');
 	}
 
-	public function edit($id){
-		$data['product']=$this->product_models->get_product($id);
+	public function edit(){
+		$data['product']=$this->product_models->get($this->id);
 		$data['categories']=$this->categories_models->get();
 		if (empty($data['product']))
         {
@@ -90,7 +109,7 @@ echo $this->pagination->create_links();
 		$this->load->view('backend/edit',$data);
 	}
 
-	public function update(){
+	public function upd(){
 		$this->product_models->update();
 		redirect('admin/product');
 	}

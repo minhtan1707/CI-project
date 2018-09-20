@@ -32,8 +32,8 @@
                 </div>
                 <div class=form-group>
                 <select name=category_id class=form-control>
-                <?php foreach($categories as $category):?>
-                <option value="<?php echo $category['category_id'];?>"><?php echo $category['category_name'];?></option>
+                <?php foreach($categories as $key=>$category):?>
+                <option value="<?php echo $category->category_id;?>"><?php echo $category->category_name;?></option>
                 <?php endforeach;?>
                 </select>
                 <input type="file" name="template_image" size="20" accept="image/*"/>

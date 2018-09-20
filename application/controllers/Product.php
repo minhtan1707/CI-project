@@ -6,13 +6,14 @@ class Product extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('product_models');
-        $this->load->helper('url_helper');
+		$this->load->helper('url_helper');
+		$this->load->helper('form');
 	}
 	
 	public function index()
 	{
 		$data['title']="Product List";
-        $data['products']=$this->product_models->get_product();
+        $data['products']=$this->product_models->get();
         $this->load->view('header',$data);
 		$this->load->view('productlist',$data);
 		$this->load->view('footer',$data);
@@ -28,6 +29,7 @@ class Product extends CI_Controller {
 		}
 		$this->load->view('header',$data);
 		$this->load->view('productitem',$data);
+		$this->load->view('footer',$data);
 	}
 
 }

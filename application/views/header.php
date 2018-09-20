@@ -72,8 +72,8 @@ $this->load->helper('url');?>
     --><!-- ////////////// CSS Include ////////////// -->
     <!-- inject:css -->
     <!-- endinject -->
-    <link rel="stylesheet" href="<?php echo base_url('static/css/thuvien.css');?>">
-    <link rel="stylesheet" href="<?php echo base_url('static/css/main.css');?>"><!-- ////////////// FAVICON ////////////// -->
+    <link rel="stylesheet" href="<?php echo base_url('/static/css/').'thuvien.css';?>">
+    <link rel="stylesheet" href="<?php echo base_url('/static/css/').'main.css';?>"><!-- ////////////// FAVICON ////////////// -->
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="../static/favicon/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="../static/favicon/favicon-16x16.png" sizes="16x16">
@@ -88,7 +88,7 @@ $this->load->helper('url');?>
   <body class="home-page" id="top-page"><!-- ////////////// Header ////////////// --><!-- ////////////// HEADER ////////////// -->
     <header class="bg-light">
       <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light"><a class="navbar-brand" href="#"> <img src="../static/img/logo.png" alt="Logo"></a>
+        <nav class="navbar navbar-expand-lg navbar-light"><a class="navbar-brand" href="#"> <img src="<?php echo base_url('/static/img/');?>logo.png" alt="Logo"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fullStackMenu" aria-controls="fullStackMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
           <div class="collapse navbar-collapse" id="fullStackMenu">
             <div class="mr-auto"></div>
@@ -118,11 +118,18 @@ $this->load->helper('url');?>
                 <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/');?>">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/product');?>">Product</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
-                  <div class="dropdown-menu"><a class="dropdown-item" href="services.html">Phone</a><a class="dropdown-item" href="services.html">Laptop</a><a class="dropdown-item" href="services.html">Tablet</a></div>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Mobile';?>">Mobile</a>
+                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Laptop';?>">Laptop</a>
+                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Tablet';?>">Tablet</a>
+                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'TV';?>">TV</a>
+                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Smart Watch';?>">Smart Watch</a>
+                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Speaker';?>">Speaker</a>
+                  </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="services.html">About us</a></li>
                 <li class="nav-item"><a class="nav-link" href="services.html">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="services.html"><i class="fa fa-shopping-cart mr-2"></i>CART</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/cart?act=home');?>"><i class="fa fa-shopping-cart mr-2"></i>CART <span style="font-weight:900;color:#FA8072"><?php echo isset($_SESSION['cart'])?count($_SESSION['cart']):'';?></span></a></li>
               </ul>
             </div>
           </nav>
