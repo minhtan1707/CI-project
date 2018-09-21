@@ -6527,5 +6527,19 @@ footer ul {
   flex-wrap: wrap; }
   footer ul li.link-item {
     flex: 50%; }
-
+.disabled{
+  display:none;
+}
+.btn-click{
+  border:1px solid #dc3545;
+  color:#dc3545;
+}
+.btn-click:hover{
+  background:#dc3545;
+  color:white;
+}
+.current-page{
+  color:#dc3545;
+  font-weight: 700;
+}
 /*# sourceMappingURL=main.css.map */

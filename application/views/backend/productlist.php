@@ -1,6 +1,11 @@
 
     <div class="container" style="max-width:940px;">
-    <div class="bg-success message text-light text-center p-2"><?php echo $this->session->flashdata('itemadded')?></div>
+    <form action="" method="get">
+        <select name=by>
+            <option value="">Order by</option>
+            <option value=name>Name</option>
+            <option value=price>Price</option>
+        </select>
     <h1><?php echo $title;?></h1>
              <?php foreach($products as $product): ?>
                 <div class="row border">

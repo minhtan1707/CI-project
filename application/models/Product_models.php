@@ -90,6 +90,13 @@ class Product_models extends CI_Model {
 	public function get_by($where, $single = FALSE) {
 		$this->db->where($where);
 		return $this->get(NULL, $single);
-	}
+        }
+        public function get_page($limit,$start,$by,$order)
+        {
+                $this->db->limit($limit, $start);
+                $this->db->order_by($by, $order);
+                $query = $this->db->get($this->_table_name)->result();
+                return $query;
+        }
 
 }
