@@ -29,7 +29,7 @@
 <!-- ////////////// Javascript Include ////////////// -->
     <!-- inject:js -->
     <!-- endinject -->
-    <script src="../static/js/thuvien.js"></script>
-    <script src="../static/js/main.js"></script>
+    <script src="./static/js/thuvien.js"></script>
+    <script src="./static/js/main.js"></script>
   </body>
 </html>

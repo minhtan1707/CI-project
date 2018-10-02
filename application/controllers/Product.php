@@ -10,7 +10,7 @@ class Product extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library("pagination");
 		$this->page = isset($_GET['page'])?$_GET['page']:1;
-		$this->limit = isset($_GET['limit'])?$_GET['limit']:3;
+		$this->limit = isset($_GET['limit'])?$_GET['limit']:4;
 		$this->order = isset($_GET['order'])?$_GET['order']:"";
 	}
 	
@@ -25,7 +25,7 @@ class Product extends CI_Controller {
 		$data['previous_page']=$this->page - 1;
 		$data['next_page']=$this->page + 1;
 		$total= count($data['products']);
-		$data['total_page']=$total%$data['limit']!=0?($total/$data['limit'])+1:$total/$data['limit'];
+		$data['total_page']=floor($total%$data['limit']!=0?($total/$data['limit'])+1:$total/$data['limit']);
 		if($this->order==1)
 		{
 			$by="price";

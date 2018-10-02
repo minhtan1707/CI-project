@@ -24,10 +24,17 @@ class Categories_models extends CI_Model {
             return $query->row_array();
         }
 
-    public function add()
+    public function add($category_image)
     {
+        // $data = array(
+        //     'category_name' => $this->input->post('categories_name')
+            
+        // );
         $data = array(
-            'category_name' => $this->input->post('categories_name')
+            'category_name' => $this->input->post('category_name'),
+            'feature' => $this->input->post('feature')=='feature'?TRUE:FALSE,
+            'description' => $this->input->post('description'),
+            'image_file' => $category_image
         );
         return $this->db->insert('categories',$data);
     }

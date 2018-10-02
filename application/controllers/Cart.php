@@ -46,6 +46,7 @@ public function index(){
             $this->load->view('footer');
         }else{
             $this->load->view('header',$data);
+            $this->load->view('footer');
         }
         
     }

@@ -77,8 +77,14 @@
             <?php foreach($feature_categories as $key=>$obj):?>
               <div class="col-6">
                 <div class="category-item bg-light p-5">
-                  <h2><?php echo $obj->category_name;?></h2>
+                  <img src="<?php echo base_url('assets/images/').$obj->image_file;?>" style="width:100%;" alt="<?php echo $obj->image_file;?>">
+                  <div class="row">
+                    <div class="offset-8 p-3 category-text">
+                    <h2><?php echo $obj->category_name;?></h2>
                   <p><?php echo $obj->description;?></p><a class="btn btn-danger btn-lg shop-btn" href="<?php echo site_url('/categories?act=product_list&cat=').$obj->category_name;?>">SHOP NOW</a>
+                    </div>
+                  </div>
+                 
                 </div>
               </div>
             <?php endforeach;?>

@@ -1,3 +1,4 @@
+<div class="container" style="max-width:940px;">
 <div class="col-lg-10 col-md-8">
                 <h3 class="font-weight-bold mb-3">Order <?php echo $order['id'];?> </h3>
             
@@ -68,9 +69,4 @@
             
         </div>
     </div>
-  <script src="../js/jquery-3.2.1.slim.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</div>

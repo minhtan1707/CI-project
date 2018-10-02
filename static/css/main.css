@@ -6396,7 +6396,7 @@ header .navbar .nav-item {
   position: relative; }
   .best-seller .owl-carousel .item {
     padding: .5ram;
-    height: 300px; }
+    max-height: 300px; }
   .best-seller .owl-carousel .owl-nav button {
     background: white;
     border: solid 1px #dc3545;
@@ -6444,7 +6444,7 @@ header .navbar .nav-item {
   margin-top: 4.25rem;
   position: relative; }
   .seasonal .owl-carousel .item {
-    height: 300px;
+    max-height: 300px;
     padding: .5ram; }
   .seasonal .owl-carousel .owl-nav button {
     background: white;
@@ -6483,16 +6483,28 @@ header .navbar .nav-item {
           font-size: .6rem; } }
 
 .feature-category {
-  height:300px;
+  max-height:400px;
   padding: 4.25rem 0; }
   .category-item{
-    height:250px;
+    height:320px;
+    position: relative;
+  }
+  .category-item img{
+    position: absolute;
+  }
+  .category-text{
+    background: black;
+    opacity: .8;
   }
   .feature-category h2 {
     font-size: 1.9rem;
-    font-weight: 600; }
+    font-weight: 600;
+  color:white; }
   .feature-category p {
-    padding-bottom: 2rem; }
+    padding-bottom: 2rem; 
+    max-height:130px;
+    overflow: hidden;
+  color:rgb(172, 172, 172);}
   .feature-category .shop-btn {
     color: white !important; }
 

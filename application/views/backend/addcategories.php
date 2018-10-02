@@ -1,29 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Insert Categories</title>
-</head>
 
-<body>
-    <div class="container-fluid">
+    <div class="container" style="max-width:940px;">
         <div class="row">
             <div class="col-lg-10 col-md-8">
-            <h2>Add Categories</h2>
-            <?php echo form_open('backend/categories/add'); ?>
+            <h2>Add Product</h2>
+            <?php echo form_open_multipart('backend/categories/add'); ?>
                 <div class="form-row">
+                    <div class="col-12">
+                        <input type="text" name="category_name" class="form-control" placeholder="Category name">
+                    </div>
                     <div class="col-6">
-                        <input type="text" name="categories_name" class="form-control" placeholder="Categories name">
+
+                         Feature Category <input type="checkbox" name="feature" value="feature">
                     </div>
                 </div>
-                <button class="btn btn-primary mt-3" type="submit" name=submit value=submit>Submit</button>
+                
+                <div class="form-group">
+                    <label for="messageform">Description</label>
+                    <textarea class="form-control" name="description" id="messageform" rows="3"></textarea>
                 </div>
+                <input type="file" name="category_image" size="20" accept="image/*"/>
+                <button class="btn btn-primary mt-3" type="submit" name=submit value=submit>Submit</button>
             </form>
+            </div>
         </div>
     </div>
 

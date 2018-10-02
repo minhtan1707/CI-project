@@ -62,7 +62,7 @@ class Product_models extends CI_Model {
                 $this->db->order_by("product.id", 'ASC');
                 $this->db->join('categories','categories.category_id=product.category_id');
                 $query = $this->db->get_where('product',array('product.category_id'=>$id));
-                return $query->result_array();
+                return $query;
         }
         public function get_by_orderid($id){
                 $this->db->order_by("product.id", 'ASC');
@@ -98,5 +98,11 @@ class Product_models extends CI_Model {
                 $query = $this->db->get($this->_table_name)->result();
                 return $query;
         }
-
+        public function getProductsWherePage($where,$limit,$start,$by,$order)
+        {
+                $this->db->limit($limit, $start);
+                $this->db->order_by($by, $order);
+                $query = $this->getProductsWhere($where,$type=false);
+                return $query;
+        }
 }

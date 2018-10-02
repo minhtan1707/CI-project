@@ -118,18 +118,18 @@ $this->load->helper('url');?>
                 <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/');?>">Home</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/product');?>">Product</a></li>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Mobile';?>">Mobile</a>
-                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Laptop';?>">Laptop</a>
-                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Tablet';?>">Tablet</a>
-                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'TV';?>">TV</a>
-                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Smart Watch';?>">Smart Watch</a>
-                    <a class="dropdown-item" href="<?php echo site_url('/categories?act=product_list&cat=').'Speaker';?>">Speaker</a>
+                  <div class="dropdown-menu bg-danger mt-0">
+                    <a class="dropdown-item bg-danger text-white" href="<?php echo site_url('/categories?act=product_list&cat=').'Mobile';?>">Mobile</a>
+                    <a class="dropdown-item bg-danger text-white" href="<?php echo site_url('/categories?act=product_list&cat=').'Laptop';?>">Laptop</a>
+                    <a class="dropdown-item bg-danger text-white" href="<?php echo site_url('/categories?act=product_list&cat=').'Tablet';?>">Tablet</a>
+                    <a class="dropdown-item bg-danger text-white" href="<?php echo site_url('/categories?act=product_list&cat=').'TV';?>">TV</a>
+                    <a class="dropdown-item bg-danger text-white" href="<?php echo site_url('/categories?act=product_list&cat=').'Smart Watch';?>">Smart Watch</a>
+                    <a class="dropdown-item bg-danger text-white" href="<?php echo site_url('/categories?act=product_list&cat=').'Speaker';?>">Speaker</a>
                   </div>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="services.html">About us</a></li>
                 <li class="nav-item"><a class="nav-link" href="services.html">Contact Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/cart?act=home');?>"><i class="fa fa-shopping-cart mr-2"></i>CART <span style="font-weight:900;color:#FA8072"><?php echo isset($_SESSION['cart'])?count($_SESSION['cart']):'';?></span></a></li>
+                <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/cart?act=home');?>"><i class="fa fa-shopping-cart mr-2"></i>CART <span style="font-weight:900;color:lavender"><?php echo isset($_SESSION['cart'])?count($_SESSION['cart']):'';?></span></a></li>
               </ul>
             </div>
           </nav>

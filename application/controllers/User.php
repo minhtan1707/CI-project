@@ -62,7 +62,7 @@ class User extends CI_Controller {
             else
             {
                 $this->load->view('header');
-                $this->load->view('login',$data);
+                $this->load->view('login');
             }
         }else{
             redirect(site_url('user?act=home'));

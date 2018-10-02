@@ -1,13 +1,8 @@
 
     <div class="container" style="max-width:940px;">
-    <form action="" method="get">
-        <select name=by>
-            <option value="">Order by</option>
-            <option value=name>Name</option>
-            <option value=price>Price</option>
-        </select>
+
     <h1><?php echo $title;?></h1>
-             <?php foreach($products as $product): ?>
+             <?php foreach($products as $key=>$product): ?>
                 <div class="row border">
                     <div class="col-2 my-1">
                             <a href=<?php echo site_url('admin/product?act=item&id=').$product->id; ?>><img class="img-fluid" src="<?php echo base_url('/assets/images/').$product->image_file;?>" style="height:130px"></a>

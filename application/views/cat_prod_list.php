@@ -1,30 +1,36 @@
 <div class="container" style="max-width:940px;">
-<div class="bg-primary message text-light text-center" style="line-height:2rem"><?php echo isset($itemadded)?$itemadded:"";?></div>
-<div class="bg-primary message text-light text-center" style="line-height:2rem"><?php echo isset($clearcart)?$clearcart:"";?></div>
-<form action="" method="get" class="mt-4 ml-auto">
-    <div class="form-row">
-    <div class="col-7"></div>
-        <div class="col-2">
-        <select name=order class="form-control">
-            <option value="name">Name</option>
-            <option value="1">Price low to high</option>
-            <option value="2">Price high to low</option>
-        </select>
+    <div class="bg-primary message text-light text-center" style="line-height:2rem">
+        <?php echo isset($itemadded)?$itemadded:"";?>
+    </div>
+    <div class="bg-primary message text-light text-center" style="line-height:2rem">
+        <?php echo isset($clearcart)?$clearcart:"";?>
+    </div>
+    <form action="" method="get" class="mt-4 ml-auto">
+        <div class="form-row">
+            <div class="col-7"></div>
+            <div class="col-2">
+                <select name=order class="form-control">
+                    <option value="name">Name</option>
+                    <option value="1">Price low to high</option>
+                    <option value="2">Price high to low</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <select name=limit class="form-control">
+                    <option value=4>Per page</option>
+                    <option value=8>8</option>
+                    <option value=16>16</option>
+                    <option value=20>20</option>
+                </select>
+            </div>
+            <div class="col-1">
+                <input type=submit class='btn btn-click' value="Sort By">
+            </div>
         </div>
-        <div class="col-2">
-        <select name=limit class="form-control">
-            <option value=4>Per page</option>
-            <option value=8>8</option>
-            <option value=16>16</option>
-            <option value=20>20</option>
-        </select>
-        </div>
-        <div class="col-1">
-        <input type=submit class='btn btn-click' value="Sort By">
-        </div>
-        </div>
-        </form>
+    </form>
     <div class="row mt-4">
+        <?php if($products):?>
+
         <?php foreach($products as $product): ?>
         <div class="col-3 my-2">
             <div class="card d-flex flex-row flex-wrap" style="width:16rem;height:500px;">
@@ -57,11 +63,16 @@
         </div>
         <?php endforeach;?>
         <div class="col-12 text-center mt-4">
-        <a href="<?php echo site_url().'/product?page='.$previous_page.'&limit='.$limit;?>" class="<?php echo $previous_page<1?'disabled':'';?> page btn btn-click">Previous</a>
-    <a class="page btn current-page"><?php echo $current_page.'/'.$total_page;?></a>
-    <a href="<?php echo site_url().'/product?page='.$next_page.'&limit='.$limit;?>" class="<?php echo $next_page>$total_page?'disabled':'';?> page btn btn-click">Next</a>
+            <a href="<?php echo site_url().'categories?act=product_list&cat='.$category->category_name.'&page='.$previous_page.'&limit='.$limit;?>"
+                class="<?php echo $previous_page<1?'disabled':'';?> page btn btn-click">Previous</a>
+            <a class="page btn current-page">
+                <?php echo $current_page.'/'.$total_page;?>
+            </a>
+            <a href="<?php echo site_url().'/categories?act=product_list&cat='.$category->category_name.'&page='.$next_page.'&limit='.$limit;?>"
+                class="<?php echo $next_page>$total_page?'disabled':'';?> page btn btn-click">Next</a>
+        </div>
+        <?php else: ?>
+        <h2>There is no item in this CATEGORY</h2>
+        <?php endif;?>
     </div>
-    </div>
-
-
 </div>
