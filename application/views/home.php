@@ -73,11 +73,16 @@
       </section>
       <section class="feature-category my-3">
         <div class="container">
+        <div class="row news_title section_title">
+            <div class="col">
+              <h3 class="btn btn-lg btn-danger my-5">Feature Categories</h3>
+            </div>
+          </div>
           <div class="row">
             <?php foreach($feature_categories as $key=>$obj):?>
-              <div class="col-6">
+              <div class="col-<?php if(count($feature_categories)<=4){echo round(12/count($feature_categories));}else{echo '6';}?> mt-3">
                 <div class="category-item bg-light p-5">
-                  <img src="<?php echo base_url('assets/images/').$obj->image_file;?>" style="width:100%;" alt="<?php echo $obj->image_file;?>">
+                  <img src="<?php echo base_url('assets/images/').$obj->image_file;?>" style="max-width:100%;" alt="<?php echo $obj->image_file;?>">
                   <div class="row">
                     <div class="offset-8 p-3 category-text">
                     <h2><?php echo $obj->category_name;?></h2>

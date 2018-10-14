@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Insert Contact</title>
-</head>
-
-<body>
-    <div class="container-fluid">
+    <div class="container" style="max-width:940px;">
         <div class="row">
-            <div class="col-lg-10 col-md-8">
-            <h2>Add Product</h2>
+            <div class="col-lg-12">
+            <h4 class="font-weight-bold my-2 text-danger">Add Product</h4>
             <?php echo form_open_multipart('backend/product/add'); ?>
                 <div class="form-row">
                     <div class="col-6">
@@ -37,12 +25,8 @@
                 <?php endforeach;?>
                 </select>
                 <input type="file" name="template_image" size="20" accept="image/*"/>
-                <button class="btn btn-primary mt-3" type="submit" name=submit value=submit>Submit</button>
+                <button class="btn btn-danger mt-3" type="submit" name=submit value=submit>Submit</button>
             </form>
             </div>
         </div>
     </div>
-
-</body>
-
-</html>

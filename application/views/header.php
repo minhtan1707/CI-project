@@ -98,7 +98,7 @@ $this->load->helper('url');?>
                 echo '<li class="nav-item"><a class="nav-link" href="'.site_url('/user?act=signup').'">Sign up</a></li>
                 <li class="nav-item"><a class="nav-link" href="'.site_url('/user?act=login').'">Sign in</a></li>';
             } else{
-                echo '<li class="nav-item"><a class="nav-link" href="services.html">'.$_SESSION['user']['username'].'</a></li>
+                echo '<li class="nav-item"><a class="nav-link" href="services.html">Hello '.$_SESSION['user']['username'].'</a></li>
                 <li class="nav-item"><a class="nav-link" href="'.site_url('/user?act=logout').'">Sign Out</a></li>';
             }?>
               <li class="nav-item"><a class="nav-link" href="<?php echo site_url('/cart?act=checkout');?>">Checkout</a></li>

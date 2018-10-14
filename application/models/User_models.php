@@ -5,12 +5,23 @@ class User_models extends CI_Model {
     protected $_primary_filter = 'intval';
     protected $_order_by_type = 'desc';
     protected $_primary_key ='user_id';
-public $rules = array();
 protected $_timestamps = FALSE;
     public function __construct()
     {
             $this->load->database();
     }
+    public function get($id = FALSE)
+    {
+        if ($id === FALSE)
+        {
+                $this->db->order_by('user_id', 'ASC');
+                $query = $this->db->get('users');
+                return $query->result_array();
+        }
+
+        $query = $this->db->get_where('users', array('user_id' => $id));
+        return $query->row_array();
+        }
     public function check($username,$password)
     {
         $this->db->where('username',$username);
@@ -61,5 +72,9 @@ protected $_timestamps = FALSE;
 
 		}
 		return FALSE;
-	}
+    }
+    public function signup($data)
+    {
+
+    }
 }

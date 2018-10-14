@@ -46,5 +46,13 @@ class Order_models extends CI_Model {
                 $this->db->insert('order_detail',$data);
             }
         }
+        public function save($data,$id){
+			$this->db->set($data);
+			$this->db->where('id', $id);
+			if ($this->db->update('product_order')) {
+				return TRUE;
+            }else{return false;}
+            
+        }
 
     }

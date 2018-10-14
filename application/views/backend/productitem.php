@@ -1,7 +1,7 @@
 
 <div class="container" style="max-width:940px;">
 
-    <h2>Contact detail</h2>
+    <h4 class="font-weight-bold my-2 text-danger">Product Details</h4>
         <div class="row mt-3">
             
             <div class="col-3">

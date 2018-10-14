@@ -91,8 +91,16 @@ class Product_models extends CI_Model {
 		$this->db->where($where);
 		return $this->get(NULL, $single);
         }
-        public function get_page($limit,$start,$by,$order)
+        public function get_page($limit,$start,$by,$order,$price_limit=null,$price_offset=0)
         {
+                if($price_limit!=null)
+                {
+                        $this->db->where('price <=',$price_limit);
+                        $this->db->where('price >=',$price_offset);
+                }else if($price_limit==null)
+                {
+                        $this->db->where('price >=',$price_offset);
+                }
                 $this->db->limit($limit, $start);
                 $this->db->order_by($by, $order);
                 $query = $this->db->get($this->_table_name)->result();
@@ -105,4 +113,18 @@ class Product_models extends CI_Model {
                 $query = $this->getProductsWhere($where,$type=false);
                 return $query;
         }
+        public function get_price_range($limit=null,$offset=0)
+        {
+                if($limit!=null)
+                {
+                        $this->db->where('price <=',$limit);
+                        $this->db->where('price >=',$offset);
+                }else if($limit==null)
+                {
+                        $this->db->where('price >=',$offset);
+                }
+                return $this->db->get($this->_table_name)->result();
+                
+        }
+
 }

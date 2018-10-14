@@ -35,6 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link text-light" href="<?php echo site_url('admin/order'); ?>">Orders</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="<?php echo site_url('admin/user'); ?>">Users</a>
+                    </li>
                 </ul>
             </div>
         </div>

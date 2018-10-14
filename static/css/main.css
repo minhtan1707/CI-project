@@ -6483,7 +6483,6 @@ header .navbar .nav-item {
           font-size: .6rem; } }
 
 .feature-category {
-  max-height:400px;
   padding: 4.25rem 0; }
   .category-item{
     height:320px;

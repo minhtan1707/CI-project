@@ -1,7 +1,7 @@
 
     <div class="container" style="max-width:940px;">
 
-    <h1><?php echo $title;?></h1>
+    <h4 class="font-weight-bold my-2 text-danger">Product List</h4>
              <?php foreach($products as $key=>$product): ?>
                 <div class="row border">
                     <div class="col-2 my-1">

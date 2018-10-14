@@ -1,9 +1,7 @@
 <div class="container" style="max-width:940px;">
-<div class="col-lg-10 col-md-8">
-                <h3 class="font-weight-bold mb-3">Order <?php echo $order['id'];?> </h3>
+<div class="col-lg-12">
+                <h1 class="text-danger font-weight-bold my-3" style="font-size:22px">Order <?php echo $order['id'];?> </h1>
             
-
-
                 <div class="row mb-1">
                     <div class="col-4">
                         
@@ -32,11 +30,11 @@
                     </div> 
                 </div>
 
-                <table class="table">
+                <table class="table" style="color:darkslategray">
                 <thead>
                 <tr>
                 <th scope="col"></th>
-                <th scope="col">Product ID</th>
+                <th scope="col" >Product ID</th>
                 <th scope="col">Product</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Price</th>
@@ -53,7 +51,7 @@
                         echo    '<td>'.$order_detail['quantity'].'</td>';
                         echo    '<td>'.$order_detail['price'].'$</td>';
                         echo    '</tr>';
-                        echo '</tbody>';                  
+                        echo '</tbody>';
                        }
                 
                 ?>   

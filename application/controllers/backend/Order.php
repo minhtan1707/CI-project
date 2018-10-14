@@ -12,6 +12,18 @@ class Order extends CI_Controller {
         $this->load->library('auth');
     }
     public function index(){
+        $status=array();
+        if($this->input->post())
+        {
+            if($this->input->post('status')=='on')
+            {
+                $status['status']=true;
+            }else
+            {
+                $status['status']=false;
+            }
+            $this->order_models->save($status,$this->input->post('id'));
+        }
         $data['title']="Order List";
 		$data['orders']=$this->order_models->get_order();
 		$this->load->view('backend/template/header',$data);

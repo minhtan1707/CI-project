@@ -45,7 +45,11 @@ class Categories extends CI_Controller {
 		$data['previous_page']=$this->page - 1;
 		$data['next_page']=$this->page + 1;
 		$total= isset($data['product'])?count($data['products']):0;
-		$data['total_page']=floor($total%$data['limit']!=0?($total/$data['limit'])+1:$total/$data['limit']);
+        if($total/$data['limit']>1){
+			$data['total_page']=floor($total%$data['limit']!=0?($total/$data['limit'])+1:$total/$data['limit']);
+		}else{
+			$data['total_page']=floor($total/$data['limit'])+1;
+		}
 		if($this->order==1)
 		{
 			$by="price";
